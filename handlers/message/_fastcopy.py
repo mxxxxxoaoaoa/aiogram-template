@@ -12,4 +12,4 @@ async def wrapper(message: types.Message):
 
 
 def register(dp: Dispatcher):
-    dp.register_message_handler(wrapper, commands=['start'])
+    dp.register_message_handler(wrapper, commands=['command'])

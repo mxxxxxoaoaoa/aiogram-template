@@ -12,6 +12,6 @@ async def wrapper(cq: types.CallbackQuery):
 
 
 def register(dp: Dispatcher):
-    dp.register_callback_query_handler(wrapper, lambda call: call.data.startwith("gen_"))
+    dp.register_callback_query_handler(wrapper, lambda call: call.data.startswith("cq"))
     # dp.register_message_handler(wrapper, lambda call: call.data == "") ## strictly equals
     # dp.register_message_handler(wrapper, lambda call: call.data in ['', '', ''])

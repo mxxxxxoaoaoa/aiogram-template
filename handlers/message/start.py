@@ -5,7 +5,7 @@ from data import messages
 
 async def func(message: types.Message):
     return await message.answer(
-        messages.start_msg
+        msgs[message.from_user.language_code]['start_message']
     )
 
 

@@ -1,15 +1,14 @@
 from aiogram import types, Dispatcher
 import asyncio
-from data import messages
+from app import msgs
 import app
 
 async def func(cq: types.CallbackQuery):
     num = cq.data.split("_")[-1]
     await app.bot.answer_callback_query(cq.id)
     await cq.message.answer(
-        messages.gen_answer.format(num)
+        msgs[message.from_user.language_code]['generate_answer'].format(num)
     )
-    return await cq.answer(messages.gen_answer.format(num))
 
 
 async def wrapper(cq: types.CallbackQuery):

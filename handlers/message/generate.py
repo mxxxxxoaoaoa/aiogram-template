@@ -1,7 +1,7 @@
 from aiogram import types, Dispatcher
 import asyncio
-from data import messages
 from keyboards import inline
+from app import msgs
 
 async def func(message: types.Message):
     args = message.get_args()
@@ -9,11 +9,11 @@ async def func(message: types.Message):
         print(args)
         kb = inline.generator_kb(int(args))
         return await message.answer(
-            messages.generate_msg.format(args),
+            msgs[message.from_user.language_code]['generate_message'].format(args),
             reply_markup=kb
         )
     else:
-        return await message.answer(messages.generate_msg_error)
+        return await message.answer(msgs[message.from_user.language_code]['generate_error'])
 
 
 async def wrapper(message: types.Message):

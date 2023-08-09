@@ -6,6 +6,8 @@ from aiogram.contrib.fsm_storage.memory import MemoryStorage
 from config import load_config
 import logging
 
+msgs = messages.load_messages()
+
 
 config = load_config('.env')
 logger = logging.getLogger(__name__)
@@ -27,5 +29,9 @@ if __name__ == '__main__':
     from handlers._loader import HandlerLoader
     HandlerLoader(dp)
     logger.info("SETUP HANDLERS")
+
+    from middlewares._loader import register_middleware
+    register_middleware(dp)
+    logger.info("SETUP MIDDLEWARES")
 
     executor.start_polling(dp, skip_updates=True)
